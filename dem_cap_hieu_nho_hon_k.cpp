@@ -7,16 +7,16 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, k;
+        ll n, k;
         cin >> n >> k;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++)
+        vector<ll> a(n);
+        for (ll i = 0; i < n; i++)
             cin >> a[i];
-        int cnt = 0;
+        ll cnt = 0;
         sort(a.begin(), a.end());
-        for (int i = 0; i < n; i++)
+        for (ll i = 0; i < n; i++)
         {
-            auto it = lower_bound(a.begin() + 1, a.end(), a[i] + k) - a.begin();
+            auto it = lower_bound(a.begin() + i + 1, a.end(), a[i] + k) - a.begin();
             cnt += it - i - 1;
         }
         cout << cnt;
