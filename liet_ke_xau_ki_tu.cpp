@@ -1,45 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
-char c;
+#define ll long long
+char x;
 int k;
-char a[20];
-bool check()
+char a[256];
+void Try(int i, char bd)
 {
-    for (int i = 2; i <= k; i++)
-    {
-        if (a[i] < a[i - 1])
-            return false;
-    }
-    return true;
-}
-void in()
-{
-    for (int i = 1; i <= k; i++)
-    {
-        cout << a[i];
-    }
-    cout << endl;
-}
-void Try(int i)
-{
-    for (char j = 'A'; j <= c; j++)
+    for (char j = bd; j <= x; j++)
     {
         a[i] = j;
         if (i == k)
         {
-            if (check())
-                in();
+            for (int y = 1; y <= k; y++)
+            {
+                cout << a[y];
+            }
+            cout << endl;
         }
-
         else
-            Try(i + 1);
+            Try(i + 1, j);
     }
 }
 int main()
 {
-    cin >> c;
-
+    cin >> x;
     cin >> k;
-    Try(1);
-    system("pause");
+    Try(1, 'A');
 }
