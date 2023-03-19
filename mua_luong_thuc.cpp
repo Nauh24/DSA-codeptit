@@ -1,42 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
 int main()
 {
     int t;
     cin >> t;
     while (t--)
     {
-        ll n, s, m;
+        int n, s, m;
         cin >> n >> s >> m;
-        ll day = 0, cnt = 0, lt = 0;
-        ll ans = s * m;
-        while (day != s)
-        {
+        int lt = s * m;   // so luong luong thuc can co trong s ngay de ton tai
+        int day = lt / n; // so ngay toi thieu mua luong thuc de ton tai
+        if (lt % n != 0)
             day++;
-            if (day % 7 != 0)
-                lt += n;
-            if (lt >= m)
-            {
-                if (day % 7 != 0)
-                    cnt++;
-                if (lt >= ans)
-                {
-                    cout << cnt;
-
-                    break;
-                }
-                ans -= m;
-                lt -= m;
-            }
-            else
-            {
-                cout << -1;
-                break;
-            }
-        }
-
+        if (day <= (s - s / 7))
+            cout << day << endl; // s-s/7 loai chu nhat ra
+        else
+            cout << -1 << endl;
         cout << endl;
     }
-    system("pause");
 }
